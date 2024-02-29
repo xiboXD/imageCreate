@@ -1,0 +1,78 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Image Generation</title>
+    <style>
+        .loader {
+            border: 16px solid #f3f3f3; /* Light grey */
+            border-top: 16px solid #3498db; /* Blue */
+            border-radius: 50%;
+            width: 120px;
+            height: 120px;
+            animation: spin 2s linear infinite;
+            margin: 0 auto;
+            display: none; /* Initially hidden */
+        }
+
+        @keyframes spin {
+            0% { transform: rotate(0deg); }
+            100% { transform: rotate(360deg); }
+        }
+    </style>
+</head>
+<body>
+    <h1>Image Generation</h1>
+    <form id="imageForm">
+        <label for="message">Enter prompt:</label><br>
+        <textarea id="message" name="message" style="width: 270px; height: 100px;"></textarea><br>
+        <input type="submit" value="Submit">
+    </form>
+    <div id="loader" class="loader"></div> <!-- Loader -->
+    <div id="imageContainer"></div>
+
+    <script>
+        // Adjust textarea size based on input length
+        document.getElementById("message").addEventListener("input", function(event) {
+            var inputLength = this.value.length;
+            var lineHeight = parseFloat(getComputedStyle(this).lineHeight);
+            var rows = Math.ceil(inputLength / this.cols);
+            this.style.height = (rows * lineHeight) + "px";
+        });
+
+        document.getElementById("imageForm").addEventListener("submit", function(event) {
+            event.preventDefault(); // Prevent default form submission
+            var message = document.getElementById("message").value; // Get message from input field
+
+            // Display loader while fetching images
+            document.getElementById("loader").style.display = "block";
+
+            // Submit message to server
+            fetch("/submit?message=" + encodeURIComponent(message))
+                .then(response => response.json()) // Parse response as JSON
+                .then(data => {
+                    // Clear previous images
+                    document.getElementById("imageContainer").innerHTML = "";
+
+                    // Hide loader
+                    document.getElementById("loader").style.display = "none";
+
+                    // Display images in response
+                    data.data.forEach(url => {
+                        var img = document.createElement("img");
+                        img.src = url;
+                        img.style.width = "270px";
+                        img.style.height = "270px";
+                        document.getElementById("imageContainer").appendChild(img);
+                    });
+                })
+                .catch(error => {
+                    // Hide loader on error
+                    document.getElementById("loader").style.display = "none";
+                    console.error("Error:", error);
+                });
+        });
+    </script>
+</body>
+</html>

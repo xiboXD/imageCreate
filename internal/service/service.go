@@ -21,17 +21,17 @@ var Config *define.Config
 func init() {
 	conf, err := ReadConfig()
 	if err != nil {
-		log.Fatal("配置文件不存在,程序退出:", err)
+		log.Fatal("Configuration file does not exist, program exits:", err)
 		return
 	}
 	if len(conf.Cookie) == 0 {
-		log.Fatal("配置文件Cookie不存在,程序退出:", err)
+		log.Fatal("Cookie does not exist in the configuration file, program exits:", err)
 		return
 	}
 
 	if conf.ProxyEnable {
 		if len(conf.ProxyUrl) == 0 {
-			log.Fatal("开启代理,但代理地址为空,程序退出")
+			log.Fatal("Proxy enabled, but proxy address is empty, program exits")
 			os.Exit(1)
 		}
 		transport := &http.Transport{
@@ -61,7 +61,7 @@ func ReadConfig() (*define.Config, error) {
 func Submit(message string) (string, error) {
 
 	escape := url.QueryEscape(message)
-	// 根据你的代码进行处理，提交请求
+	// Process according to your code, submit the request
 	requestUrl := fmt.Sprintf(config.RequestUrl, escape)
 	request, err := http.NewRequest("POST", requestUrl, nil)
 	if err != nil {
@@ -92,7 +92,7 @@ func Submit(message string) (string, error) {
 	id := location.Query().Get("id")
 	q := location.Query().Get("q")
 	if len(id) == 0 {
-		return "", errors.New("请求失败,请确认网络,或添加代理")
+		return "", errors.New("Request failed, please check the network or add a proxy")
 	}
 	config.Cache[id] = q
 	return id, nil
@@ -101,7 +101,7 @@ func Submit(message string) (string, error) {
 func Result(id string) ([]string, error) {
 	q := config.Cache[id]
 	if len(q) == 0 {
-		return nil, errors.New("id 不存在,请检查")
+		return nil, errors.New("id does not exist, please check")
 	}
 	requestUrl := config.RequestResultUrl + id + "?q=" + url.QueryEscape(q)
 	request, err := http.NewRequest("POST", requestUrl, nil)
@@ -120,7 +120,7 @@ func Result(id string) ([]string, error) {
 		return nil, err
 	}
 	if len(string(bytes)) == 0 {
-		return nil, errors.New("照片正在生成中,请稍后重试")
+		return nil, errors.New("Photo is being generated, please try again later")
 	}
 	doc, err := html.Parse(strings.NewReader(string(bytes)))
 	if err != nil {
@@ -133,7 +133,7 @@ func Result(id string) ([]string, error) {
 
 	srcArrays := make([]string, 0)
 	for _, node := range nodes {
-		// 获取节点的值（src 属性的值）
+		// Get the value of the node (value of src attribute)
 		srcValue := htmlquery.InnerText(node)
 		srcValue = strings.ReplaceAll(srcValue, "w=270&h=270&c=6&r=0&o=5&dpr=1.5", "")
 		srcArrays = append(srcArrays, srcValue)
@@ -142,7 +142,7 @@ func Result(id string) ([]string, error) {
 	if len(srcArrays) == 0 {
 		nodes, err = htmlquery.QueryAll(doc, "//*[@id='gir_async']/a/img/@src")
 		for _, node := range nodes {
-			// 获取节点的值（src 属性的值）
+			// Get the value of the node (value of src attribute)
 			srcValue := htmlquery.InnerText(node)
 			srcValue = strings.ReplaceAll(srcValue, "w=270&h=270&c=6&r=0&o=5&dpr=1.5", "")
 			srcArrays = append(srcArrays, srcValue)
@@ -150,7 +150,7 @@ func Result(id string) ([]string, error) {
 	}
 
 	if len(srcArrays) == 0 {
-		return nil, errors.New("包含敏感词汇,已阻止生成")
+		return nil, errors.New("Contains sensitive words, generation blocked")
 	}
 	//delete(config.Cache, id)
 	return srcArrays, nil

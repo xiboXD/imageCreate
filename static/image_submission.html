@@ -49,7 +49,7 @@
             document.getElementById("loader").style.display = "block";
 
             // Submit message to server
-            fetch("/submit?message=" + encodeURIComponent(message))
+            fetch("/generate?message=" + encodeURIComponent(message))
                 .then(response => response.json()) // Parse response as JSON
                 .then(data => {
                     // Clear previous images

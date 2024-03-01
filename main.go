@@ -10,7 +10,7 @@ func main() {
 
 	r.Static("/static", "./static")
 
-	r.GET("/submit", handler.SubmitResultHandler)
+	r.GET("/generate", handler.SubmitResultHandler)
 
 	r.GET("/", func(c *gin.Context) {
 		c.File("static/image_submission.html")

@@ -1,0 +1,85 @@
+{
+    "_id" : ObjectId("65e02970d3cc9fea0de8969e"),
+    "name" : "blowgun[weapon]",
+    "desc" : "The cat is holding a blowgun."
+}
+{
+    "_id" : ObjectId("65e02970d3cc9fea0de8969f"),
+    "name" : "robot[style]",
+    "desc" : "The cat is robot style."
+}
+{
+    "_id" : ObjectId("65e02970d3cc9fea0de896a0"),
+    "name" : "silver stud earrings[accessory]/lace top[clothes]",
+    "desc" : "The cat is wearing silver stud earrings.\nThe cat is wearing lace top."
+}
+{
+    "_id" : ObjectId("65e02970d3cc9fea0de896a1"),
+    "name" : "varsity jacket[clothes]/driving shoes[shoes]",
+    "desc" : "The cat is wearing varsity jacket.\nThe cat is wearing driving shoes."
+}
+{
+    "_id" : ObjectId("65e02970d3cc9fea0de896a2"),
+    "name" : "has starry eyes[eye]/spirit[style]/bow[weapon]",
+    "desc" : "The cat has starry eyes.\nThe cat is spirit style.\nThe cat is holding a bow."
+}
+{
+    "_id" : ObjectId("65e02970d3cc9fea0de896a3"),
+    "name" : "tailcoat[clothes]/slouch hat[hat]/whip[weapon]",
+    "desc" : "The cat is wearing tailcoat.\nThe cat is wearing slouch hat.\nThe cat is holding a whip."
+}
+{
+    "_id" : ObjectId("65e02970d3cc9fea0de896a4"),
+    "name" : "silver hoop earrings[accessory]/tongue out[mouth]/baby pegasus[pet]/zen master[style]",
+    "desc" : "The cat is wearing silver hoop earrings.\nThe cat has tongue out mouth.\nThe cat has a pet baby pegasus.\nThe cat is zen master style."
+}
+{
+    "_id" : ObjectId("65e02970d3cc9fea0de896a5"),
+    "name" : "viking crown[accessory]/slingback heels[shoes]/monster[style]/grenade[weapon]",
+    "desc" : "The cat is wearing viking crown.\nThe cat is wearing slingback heels.\nThe cat is monster style.\nThe cat is holding a grenade."
+}
+{
+    "_id" : ObjectId("65e02970d3cc9fea0de896a6"),
+    "name" : "gemstone ring[accessory]/wool turtleneck[clothes]/alluring[mouth]/tap shoes[shoes]/samurai[style]",
+    "desc" : "The cat is wearing gemstone ring.\nThe cat is wearing wool turtleneck.\nThe cat has alluring mouth.\nThe cat is wearing tap shoes.\nThe cat is samurai style."
+}
+{
+    "_id" : ObjectId("65e02970d3cc9fea0de896a7"),
+    "name" : "vietnam jacket[clothes]/panama hat[hat]/pursed[mouth]/sandals[shoes]/rockstar[style]",
+    "desc" : "The cat is wearing vietnam jacket.\nThe cat is wearing panama hat.\nThe cat has pursed mouth.\nThe cat is wearing sandals.\nThe cat is rockstar style."
+}
+{
+    "_id" : ObjectId("65e02970d3cc9fea0de896a8"),
+    "name" : "horned headpiece[accessory]/jumpsuit[clothes]/coy[mouth]/baby rocket[pet]/platform shoes[shoes]/war fan[weapon]",
+    "desc" : "The cat is wearing horned headpiece.\nThe cat is wearing jumpsuit.\nThe cat has coy mouth.\nThe cat has a pet baby rocket.\nThe cat is wearing platform shoes.\nThe cat is holding a war fan."
+}
+{
+    "_id" : ObjectId("65e02970d3cc9fea0de896a9"),
+    "name" : "gold hoop earrings[accessory]/tailcoat[clothes]/has glittering eyes[eye]/cigar[mouth]/baby unicorn[pet]/shuriken[weapon]",
+    "desc" : "The cat is wearing gold hoop earrings.\nThe cat is wearing tailcoat.\nThe cat has glittering eyes.\nThe cat has cigar mouth.\nThe cat has a pet baby unicorn.\nThe cat is holding a shuriken."
+}
+{
+    "_id" : ObjectId("65e02970d3cc9fea0de896aa"),
+    "name" : "ribbon bow[accessory]/judge's robes[clothes]/has calm eyes[eye]/baby ufo[pet]/peep-toe shoes[shoes]/troll[style]/knuckle-duster[weapon]",
+    "desc" : "The cat is wearing ribbon bow.\nThe cat is wearing judge's robes.\nThe cat has calm eyes.\nThe cat has a pet baby ufo.\nThe cat is wearing peep-toe shoes.\nThe cat is troll style.\nThe cat is holding a knuckle-duster."
+}
+{
+    "_id" : ObjectId("65e02970d3cc9fea0de896ab"),
+    "name" : "gold stud  earrings[accessory]/smoking jacket[clothes]/smile[mouth]/baby quokka[pet]/slip-resistant shoes[shoes]/knight[style]/warhammer[weapon]",
+    "desc" : "The cat is wearing gold stud  earrings.\nThe cat is wearing smoking jacket.\nThe cat has smile mouth.\nThe cat has a pet baby quokka.\nThe cat is wearing slip-resistant shoes.\nThe cat is knight style.\nThe cat is holding a warhammer."
+}
+{
+    "_id" : ObjectId("65e02970d3cc9fea0de896ac"),
+    "name" : "devil horns[accessory]/sari[clothes]/has cosmic eyes[eye]/chullo[hat]/grin[mouth]/baby wallaby[pet]/dead cat[style]/war sickle[weapon]",
+    "desc" : "The cat is wearing devil horns.\nThe cat is wearing sari.\nThe cat has cosmic eyes.\nThe cat is wearing chullo.\nThe cat has grin mouth.\nThe cat has a pet baby wallaby.\nThe cat is dead cat style.\nThe cat is holding a war sickle."
+}
+{
+    "_id" : ObjectId("65e02970d3cc9fea0de896ad"),
+    "name" : "lock and key[accessory]/vietnam jacket[clothes]/has moon eyes[eye]/gatsby hat[hat]/angelic[mouth]/penguin[pet]/jelly sandals[shoes]/war drum[weapon]",
+    "desc" : "The cat is wearing lock and key.\nThe cat is wearing vietnam jacket.\nThe cat has moon eyes.\nThe cat is wearing gatsby hat.\nThe cat has angelic mouth.\nThe cat has a pet penguin.\nThe cat is wearing jelly sandals.\nThe cat is holding a war drum."
+}
+{
+    "_id" : ObjectId("65e02970d3cc9fea0de896ae"),
+    "name" : "cross earrings[accessory]/striped tee[clothes]/has captivating eyes[eye]/sun hat[hat]/chirpy[mouth]/baby phoenix[pet]/derby loafers[shoes]/ghost[style]/club[weapon]",
+    "desc" : "The cat is wearing cross earrings.\nThe cat is wearing striped tee.\nThe cat has captivating eyes.\nThe cat is wearing sun hat.\nThe cat has chirpy mouth.\nThe cat has a pet baby phoenix.\nThe cat is wearing derby loafers.\nThe cat is ghost style.\nThe cat is holding a club."
+}

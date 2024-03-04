@@ -1,8 +1,9 @@
 package main
 
 import (
-	"github.com/gin-gonic/gin"
 	"image-Designer/internal/handler"
+
+	"github.com/gin-gonic/gin"
 )
 
 func main() {
@@ -11,6 +12,8 @@ func main() {
 	r.Static("/static", "./static")
 
 	r.GET("/generate", handler.SubmitResultHandler)
+
+	r.POST("/batch-generate", handler.BatchSubmitHandler)
 
 	r.GET("/", func(c *gin.Context) {
 		c.File("static/image_submission.html")

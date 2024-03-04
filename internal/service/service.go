@@ -4,8 +4,6 @@ import (
 	"encoding/json"
 	"errors"
 	"fmt"
-	"github.com/antchfx/htmlquery"
-	"golang.org/x/net/html"
 	"image-Designer/internal/config"
 	"image-Designer/internal/define"
 	"io/ioutil"
@@ -14,6 +12,9 @@ import (
 	"net/url"
 	"os"
 	"strings"
+
+	"github.com/antchfx/htmlquery"
+	"golang.org/x/net/html"
 )
 
 var Config *define.Config
@@ -150,7 +151,7 @@ func Result(id string) ([]string, error) {
 	}
 
 	if len(srcArrays) == 0 {
-		return nil, errors.New("Contains sensitive words, generation blocked")
+		return srcArrays, nil
 	}
 	//delete(config.Cache, id)
 	return srcArrays, nil

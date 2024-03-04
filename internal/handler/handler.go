@@ -4,10 +4,9 @@ import (
 	"github.com/gin-gonic/gin"
 	"image-Designer/internal/service"
 	"net/http"
-	"time"
 )
 
-func SubmitResultHandler(c *gin.Context) {
+func GenerateHandler(c *gin.Context) {
 	requestMsg := c.Query("message")
 	id, err := service.Submit(requestMsg)
 	if err != nil {
@@ -18,19 +17,24 @@ func SubmitResultHandler(c *gin.Context) {
 		})
 		return
 	}
+	c.JSON(http.StatusOK, gin.H{
+		"message": "Request submitted",
+		"id":      id,
+		"code":    200,
+	})
+}
 
-	// Wait for 30 seconds before querying the result
-	time.Sleep(30 * time.Second)
-
-	result, err := service.Result(id)
-	attempts := 0
-	for err != nil && attempts < 2 {
-		// Wait for another 30 seconds if result is not available
-		time.Sleep(30 * time.Second)
-		result, err = service.Result(id)
-		attempts++
+func ResultHandler(c *gin.Context) {
+	id := c.Param("id")
+	if len(id) == 0 {
+		c.JSON(http.StatusOK, gin.H{
+			"message": "ID cannot be empty, operation failed",
+			"data":    make([]string, 0),
+			"code":    500,
+		})
+		return
 	}
-
+	result, err := service.Result(id)
 	if err != nil {
 		c.JSON(http.StatusOK, gin.H{
 			"message": err.Error(),
@@ -39,9 +43,8 @@ func SubmitResultHandler(c *gin.Context) {
 		})
 		return
 	}
-
 	c.JSON(http.StatusOK, gin.H{
-		"message": "Success",
+		"message": "Operation successful",
 		"data":    result,
 		"code":    200,
 	})

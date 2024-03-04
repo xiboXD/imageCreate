@@ -1,8 +1,11 @@
 package handler
 
 import (
+	"encoding/json"
+	"fmt"
 	"image-Designer/internal/service"
 	"net/http"
+	"os"
 	"time"
 
 	"github.com/gin-gonic/gin"
@@ -47,74 +50,6 @@ func SubmitResultHandler(c *gin.Context) {
 		"code":    http.StatusOK,
 	})
 }
-
-// func BatchSubmitHandler(c *gin.Context) {
-// 	// Declare a struct to hold the request body
-// 	var requestBody struct {
-// 		Messages []string `json:"messages"`
-// 	}
-
-// 	// Bind the request body to the struct
-// 	if err := c.BindJSON(&requestBody); err != nil {
-// 		c.JSON(http.StatusBadRequest, gin.H{
-// 			"message": "Invalid request body",
-// 			"code":    http.StatusBadRequest,
-// 		})
-// 		return
-// 	}
-
-// 	// Define slice to store aggregated data
-// 	var aggregatedData []string
-
-// 	// Iterate over each message
-// 	for _, message := range requestBody.Messages {
-// 		// Submit the message and get the ID
-// 		id, err := service.Submit(message)
-// 		if err != nil {
-// 			c.JSON(http.StatusInternalServerError, gin.H{
-// 				"message": err.Error(),
-// 				"data":    aggregatedData,
-// 				"code":    http.StatusInternalServerError,
-// 			})
-// 			return
-// 		}
-
-// 		// Wait for 30 seconds before querying the result
-// 		time.Sleep(30 * time.Second)
-
-// 		// Query the result
-// 		result, err := service.Result(id)
-
-// 		// Retry if result is not available
-// 		attempts := 0
-// 		for err != nil && attempts < 2 {
-// 			// Wait for another 30 seconds if result is not available
-// 			time.Sleep(30 * time.Second)
-// 			result, err = service.Result(id)
-// 			attempts++
-// 		}
-
-// 		// If error still exists after retrying
-// 		if err != nil {
-// 			c.JSON(http.StatusInternalServerError, gin.H{
-// 				"message": err.Error(),
-// 				"data":    aggregatedData,
-// 				"code":    http.StatusInternalServerError,
-// 			})
-// 			return
-// 		}
-
-// 		// Append result to aggregated data
-// 		aggregatedData = append(aggregatedData, result...)
-// 	}
-
-// 	// Return success response with aggregated data
-// 	c.JSON(http.StatusOK, gin.H{
-// 		"message": "Success",
-// 		"data":    aggregatedData,
-// 		"code":    http.StatusOK,
-// 	})
-// }
 
 func BatchSubmitHandler(c *gin.Context) {
 	// Declare a struct to hold the request body
@@ -182,4 +117,28 @@ func BatchSubmitHandler(c *gin.Context) {
 		"data":    aggregatedData,
 		"code":    http.StatusOK,
 	})
+
+	// Save aggregated data to a JSON file
+	saveDataToFile(aggregatedData)
+}
+
+func saveDataToFile(data map[string][]string) {
+	timestamp := time.Now().Format("20060102_150405")
+	filename := fmt.Sprintf("output/output_%s.json", timestamp) // Output folder path
+
+	file, err := os.Create(filename)
+	if err != nil {
+		fmt.Printf("Error creating file: %v\n", err)
+		return
+	}
+	defer file.Close()
+
+	encoder := json.NewEncoder(file)
+	err = encoder.Encode(data)
+	if err != nil {
+		fmt.Printf("Error encoding JSON: %v\n", err)
+		return
+	}
+
+	fmt.Printf("Data saved to file: %s\n", filename)
 }

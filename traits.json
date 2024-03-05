@@ -1,0 +1,11 @@
+[
+    {"name": "Hat", "values": ["Boater Hat", "Police Hat", "Bucket Hat", "Chef's Hat", "Cowboy Hat"]},
+    {"name": "Eyes", "values": ["Has Curious eyes", "Has Dazzling eyes", "Has Determined eyes", "Has Dreamy eyes", "Has Smiling eyes"]},
+    {"name": "Mouth", "values": ["Playful mouth", "Pursed mouth", "Radiant mouth", "Relaxed mouth", "Smile mouth"]},
+    {"name": "Clothes", "values": ["Boater Jacket", "Bolero Jacket", "Cyberpunk Jacket", "Denim Jacket", "Leather Jacket"]},
+    {"name": "Pet", "values": ["Baby Pig", "Baby Phoenix", "Baby Red Panda", "Baby Unicorn", "Baby Duck"]},
+    {"name": "Necklace", "values": ["Cross necklace", "Matinee Necklace", "Pearl necklace", "Princess Necklace", "Heart-shape necklace"]},
+    {"name": "Breed", "values": ["Siamese", "Bengal"]},
+    {"name": "Background", "values": ["waterfall", "star", "moon", "beach"]},
+    {"name": "Fur", "value": ["white", "black", "light orange", "light purple", "light blue"]}
+    ]

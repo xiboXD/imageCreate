@@ -13,7 +13,11 @@ func main() {
 
 	r.GET("/generate", handler.SubmitResultHandler)
 
+	r.GET("/create", handler.GenerateHandler)
+
 	r.POST("/batch-generate", handler.BatchSubmitHandler)
+
+	r.GET("/get-batch-result", handler.GetOutputByIDHandler)
 
 	r.GET("/", func(c *gin.Context) {
 		c.File("static/image_submission.html")
